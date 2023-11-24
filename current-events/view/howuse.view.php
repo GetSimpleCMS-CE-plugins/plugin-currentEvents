@@ -7,15 +7,29 @@
         color: #fff !important;
         text-decoration: none !important;
     }
+	code {
+		border: solid 1px #ddd;
+		background: #fafafa;
+		padding: 5px;
+		display: inline-block;
+		margin: 10px 0;
+		color: green;
+	}
+	.no-italics {
+		font-style: normal;   
+	}
 </style>
 
-<h3>CurrentEvent Plugin-How use?</h3>
-<a href="<?php
-global $SITEURL;
-global $GSADMIN;
-echo $SITEURL . $GSADMIN; ?>/load.php?id=current-events" class="btn">Back to list</a>
+<?php
+	global $SITEURL;
+	global $GSADMIN;
+?>
+
+<h3><span class="no-italics">📅</span> <?php echo i18n_r('current-events/lang_Page_Title').' - '.i18n_r('current-events/lang_BTN_Help'); ?></h3>
+<a href="<?php echo $SITEURL . $GSADMIN; ?>/load.php?id=current-events" class="btn"><?php echo i18n_r('current-events/lang_BTN_Back'); ?></a>
+
 <br><br>
-<p>Put this shortcode ond content</p>
-<code style="width:100%;border:solid 1px #ddd; background:#fafafa;display:block;padding:10px;margin:10px 0;">[% ce %]</code>
-or on your template
-<code style="width:100%;border:solid 1px #ddd; background:#fafafa;display:block;padding:10px;margin:10px 0;">&lt;?php showEventCalendar() ;?&gt;</code>
+
+<p>• <?php echo i18n_r('current-events/lang_Shortcode'); ?>: <code>[% ce %]</code></p>
+
+<p>• <?php echo i18n_r('current-events/lang_Call'); ?>: <code>&lt;?php showEventCalendar() ;?&gt;</code></p>
