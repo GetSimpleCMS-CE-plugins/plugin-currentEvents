@@ -54,8 +54,8 @@
 
 <ul class="event-items">
 	<?php
-		if (!empty(glob(GSDATAOTHERPATH . 'current-events\*.json'))) {
-			foreach (glob(GSDATAOTHERPATH . 'current-events\*.json') as $key => $file) {
+		if (!empty(glob(GSDATAOTHERPATH . 'current-events/*.json'))) {
+			foreach (glob(GSDATAOTHERPATH . 'current-events/*.json') as $key => $file) {
 				$data = json_decode(file_get_contents($file));
 
 				echo '<li class="event-item"><b>' . $data->eventname . '</b> <a href="' . $SITEURL . $GSADMIN . '/load.php?id=current-events&addevent&edit=' . pathinfo($file)['filename'] . '" class="btn-sm">Edit</a>
