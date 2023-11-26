@@ -22,7 +22,7 @@
 		
 	# Event
 		"lang_Add_New"			=>	"Add/Edit Event",
-		"lang_Event_Title"		=>	"Titel (Required)",
+		"lang_Event_Title"		=>	"Title (Required)",
 		"lang_Event_Description"=>	"Description",
 		"lang_Event_Display"	=>	"Event Display Style",
 		"lang_Event_Full_Day"	=>	"Full Day",
@@ -60,7 +60,7 @@
 		"lang_Background_Color"	=>	"Default Background Color",
 		"lang_Text_Color"		=>	"Default Text Color",
 		
-		"lang_Header_Nav"		=>	"Show Header Nav,?",
+		"lang_Header_Nav"		=>	"Show Header Nav?",
 		"lang_Yes"				=>	"Yes",
 		"lang_No"				=>	"No",
 		
