@@ -10,7 +10,7 @@ i18n_merge($CurrentEvents) || i18n_merge($CurrentEvents, 'en_US');
 register_plugin(
 	$CurrentEvents, //Plugin id
 	i18n_r($CurrentEvents.'/lang_Menu_Title'), //Plugin name
-	'3.1',		//Plugin version
+	'3.2',		//Plugin version
 	'Multicolor',	//Plugin author
 	'https://bit.ly/donate-multicolor-plugins', //author website
 	i18n_r($CurrentEvents.'/lang_Description'), //Plugin description
