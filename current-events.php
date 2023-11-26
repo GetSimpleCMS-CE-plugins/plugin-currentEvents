@@ -195,12 +195,12 @@ function headCurrentEvent()
 		echo ", events: [
 		";
 
-		if (!empty(glob(GSDATAOTHERPATH . 'current-events\*.json'))) {
-			foreach (glob(GSDATAOTHERPATH . 'current-events\*.json') as $key => $file) {
+		if (!empty(glob(GSDATAOTHERPATH . 'current-events/*.json'))) {
+			foreach (glob(GSDATAOTHERPATH . 'current-events/*.json') as $key => $file) {
 				$data = file_get_contents($file);
 				echo $data;
 
-				if ($key !== count(glob(GSDATAOTHERPATH . 'current-events\*.json'))) {
+				if ($key !== count(glob(GSDATAOTHERPATH . 'current-events/*.json'))) {
 				echo ',';
 				};
 			};
