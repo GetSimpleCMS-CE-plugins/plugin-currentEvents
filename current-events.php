@@ -10,7 +10,7 @@ register_plugin(
   '3.0',         //Plugin version
   'Multicolor',  //Plugin author
   'https://bit.ly/donate-multicolor-plugins', //author website
-  'Easy to use plugin calendar', //Plugin description
+  'Easy to use event calendar plugin', //Plugin description
   'pages', //page type - on which admin tab to display
   'currentEvent'  //main function (administration)
 );
