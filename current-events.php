@@ -1,4 +1,6 @@
-<?php if(!defined('IN_GS')){ die('you cannot load this page directly.'); }
+<?php if (!defined('IN_GS')) {
+	die('you cannot load this page directly.');
+}
 
 # get correct id for plugin
 $CurrentEvents = basename(__FILE__, ".php");
@@ -9,11 +11,11 @@ i18n_merge($CurrentEvents) || i18n_merge($CurrentEvents, 'en_US');
 # register plugin
 register_plugin(
 	$CurrentEvents, //Plugin id
-	i18n_r($CurrentEvents.'/lang_Menu_Title'), //Plugin name
-	'3.2',		//Plugin version
+	i18n_r($CurrentEvents . '/lang_Menu_Title'), //Plugin name
+	'3.2 - 24hours time',		//Plugin version
 	'Multicolor',	//Plugin author
 	'https://bit.ly/donate-multicolor-plugins', //author website
-	i18n_r($CurrentEvents.'/lang_Description'), //Plugin description
+	i18n_r($CurrentEvents . '/lang_Description'), //Plugin description
 	'pages',			//page type - on which admin tab to display
 	'currentEvent'	//main function (administration)
 );
@@ -21,7 +23,7 @@ register_plugin(
 # activate filter 
 
 # add a link in the admin tab 'theme'
-add_action('pages-sidebar', 'createSideMenu', array($CurrentEvents, i18n_r($CurrentEvents.'/lang_Menu_Title')));
+add_action('pages-sidebar', 'createSideMenu', array($CurrentEvents, i18n_r($CurrentEvents . '/lang_Menu_Title')));
 
 add_action('theme-header', 'headCurrentEvent');
 
@@ -84,7 +86,7 @@ function showEventCalendar()
 
 function returnEventCalendar()
 {
-  return '
+	return '
 	<div id="calendar"></div>
 
 	<div class="datepicker">
@@ -154,11 +156,11 @@ function headCurrentEvent()
 			var calendar = new FullCalendar.Calendar(calendarEl, 
 			";
 
-			$file = GSDATAOTHERPATH . 'current-events/settings/settings.json';
-			$fileJS = json_decode(@file_get_contents($file));
+	$file = GSDATAOTHERPATH . 'current-events/settings/settings.json';
+	$fileJS = json_decode(@file_get_contents($file));
 
-			if (file_exists($file) && $fileJS->header == true) {
-				echo "{
+	if (file_exists($file) && $fileJS->header == true) {
+		echo "{
 					allDay:true,
 					eventBackgroundColor:'blue',
 					initialView: '" . $fileJS->initialView . "',
@@ -167,21 +169,21 @@ function headCurrentEvent()
 					firstDay:" . $fileJS->firstDay . ",
 				";
 
-				if ($fileJS->header == 'true') {
-					echo "  headerToolbar:{
+		if ($fileJS->header == 'true') {
+			echo "  headerToolbar:{
 						start: 'title',
 						center: '',
 						end: 'today,next'
 					}";
-				} else {
-					echo "  headerToolbar:{
+		} else {
+			echo "  headerToolbar:{
 						start: 'title',
 						center: '',
 						end: ''
 					}";
-				};
-			} else {
-				echo "{
+		};
+	} else {
+		echo "{
 					allDay:true,
 					initialView: 'dayGridMonth',
 					locale:'en',
@@ -190,24 +192,34 @@ function headCurrentEvent()
 						center: '',
 						end: 'next'
 					}";
-		};
+	};
 
-		echo ", events: [
+	echo ", events: [
+
+
 		";
 
-		if (!empty(glob(GSDATAOTHERPATH . 'current-events/*.json'))) {
-			foreach (glob(GSDATAOTHERPATH . 'current-events/*.json') as $key => $file) {
-				$data = file_get_contents($file);
-				echo $data;
+	if (!empty(glob(GSDATAOTHERPATH . 'current-events/*.json'))) {
+		foreach (glob(GSDATAOTHERPATH . 'current-events/*.json') as $key => $file) {
+			$data = file_get_contents($file);
+			echo $data;
 
-				if ($key !== count(glob(GSDATAOTHERPATH . 'current-events/*.json'))) {
+			if ($key !== count(glob(GSDATAOTHERPATH . 'current-events/*.json'))) {
 				echo ',';
-				};
 			};
 		};
+	};
 
-		echo "
+	echo "
 			],
+ 
+			
+		eventTimeFormat: { 
+			hour: '2-digit',
+			minute: '2-digit',
+			second: '2-digit',
+			meridiem: false
+		  },
 
 			eventContent: function( info ) {
 			  return {html: info.event.title};
